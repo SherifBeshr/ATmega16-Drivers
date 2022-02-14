@@ -2,7 +2,7 @@
 File Name	: gpio.c
 Author		: Sherif Beshr
 Description : Source file for the AVR GPIO driver
-*******************************************************************************************************/
+ *******************************************************************************************************/
 
 #include "gpio.h"
 #include "common_macros.h"		/* To use the macros like SET_BIT */
@@ -92,7 +92,7 @@ void GPIO_writePin(uint8 port_num, uint8 pin_num, uint8 value)
 	}
 	else
 	{
-		/* Setup the pin direction as required */
+		 /* Write the pin value as required */
 		switch (port_num)
 		{
 		case PORTA_ID:
@@ -147,6 +147,10 @@ void GPIO_writePin(uint8 port_num, uint8 pin_num, uint8 value)
 
 uint8 GPIO_readPin(uint8 port_num, uint8 pin_num)
 {
+	/*
+	 * Check if the input number is greater than NUM_OF_PORTS value.
+	 * In this case the input is not valid port number
+	 */
 	uint8 pin_value = LOGIC_LOW;
 
 	if ((pin_num >= NUM_OF_PINS_PER_PORT) || (port_num >= NUM_OF_PORTS))
@@ -155,11 +159,11 @@ uint8 GPIO_readPin(uint8 port_num, uint8 pin_num)
 	}
 	else
 	{
-		/* Setup the pin direction as required */
+		/* Read the pin value as required */
 		switch (port_num)
 		{
 		case PORTA_ID:
-			if (BIT_IS_SET(PORTA,pin_num))
+			if (BIT_IS_SET(PINA,pin_num))
 			{
 				pin_value = LOGIC_HIGH;
 			}
@@ -169,7 +173,7 @@ uint8 GPIO_readPin(uint8 port_num, uint8 pin_num)
 			}
 			break;
 		case PORTB_ID:
-			if (BIT_IS_SET(PORTB,pin_num))
+			if (BIT_IS_SET(PINB,pin_num))
 			{
 				pin_value = LOGIC_HIGH;
 			}
@@ -179,7 +183,7 @@ uint8 GPIO_readPin(uint8 port_num, uint8 pin_num)
 			}
 			break;
 		case PORTC_ID:
-			if (BIT_IS_SET(PORTC,pin_num))
+			if (BIT_IS_SET(PINC,pin_num))
 			{
 				pin_value = LOGIC_HIGH;
 			}
@@ -189,7 +193,7 @@ uint8 GPIO_readPin(uint8 port_num, uint8 pin_num)
 			}
 			break;
 		case PORTD_ID:
-			if (BIT_IS_SET(PORTD,pin_num))
+			if (BIT_IS_SET(PIND,pin_num))
 			{
 				pin_value = LOGIC_HIGH;
 			}
@@ -212,13 +216,17 @@ uint8 GPIO_readPin(uint8 port_num, uint8 pin_num)
  */
 void GPIO_setupPortDirection(uint8 port_num, GPIO_PortDirectionType direction)
 {
+	/*
+	 * Check if the input number is greater than NUM_OF_PORTS value.
+	 * In this case the input is not valid port number
+	 */
 	if ((port_num >= NUM_OF_PORTS))
 	{
 		/* Do Nothing */
 	}
 	else
 	{
-		/* Setup the pin direction as required */
+		/* Setup the port direction as required */
 		switch (port_num)
 		{
 		case PORTA_ID:
@@ -246,13 +254,17 @@ void GPIO_setupPortDirection(uint8 port_num, GPIO_PortDirectionType direction)
  */
 void GPIO_writePort(uint8 port_num, uint8 value)
 {
+	/*
+	 * Check if the input number is greater than NUM_OF_PORTS value.
+	 * In this case the input is not valid port number
+	 */
 	if ((port_num >= NUM_OF_PORTS))
 	{
 		/* Do Nothing */
 	}
 	else
 	{
-		/* Setup the pin direction as required */
+		/* Write the port value as required */
 		switch (port_num)
 		{
 		case PORTA_ID:
@@ -280,13 +292,17 @@ uint8 GPIO_readPort(uint8 port_num)
 {
 	uint8 value = LOGIC_LOW;
 
+	/*
+	 * Check if the input number is greater than NUM_OF_PORTS value.
+	 * In this case the input is not valid port number
+	 */
 	if ((port_num >= NUM_OF_PORTS))
 	{
 		/* Do Nothing */
 	}
 	else
 	{
-		/* Setup the pin direction as required */
+		/* Read the port value as required */
 		switch (port_num)
 		{
 		case PORTA_ID:
