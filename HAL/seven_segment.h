@@ -1,7 +1,7 @@
 /******************************************************************************************************
 File Name	: seven_segment.h
 Author		: Sherif Beshr
-Description : 
+Description : Header file for the 7-Segment Driver
 *******************************************************************************************************/
 
 #ifndef SEVEN_SEGMENT_H_
@@ -9,6 +9,8 @@ Description :
 
 #include "std_types.h"
 
-void Seven_seg_init(uint8 Port_Pin1, uint8 Pin1, uint8 Port_Pin2, uint8 Pin2, uint8 Port_Pin3, uint8 Pin3, uint8 Port_Pin4, uint8 Pin4);
+void Seven_seg_init(void);
+
+void Seven_seg_display (uint8 Num);
 
 #endif /* SEVEN_SEGMENT_H_ */
