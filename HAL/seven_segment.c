@@ -8,6 +8,10 @@ Description : Source file for the 7-Segment Driver
 #include "gpio.h"
 #include "common_macros.h"
 
+
+/*
+ * Edit These Ports and Pins macros to use the pins you choose in your project
+ */
 #define Port_Pin1		PORTB_ID
 #define Port_Pin2		PORTB_ID
 #define Port_Pin3		PORTB_ID
