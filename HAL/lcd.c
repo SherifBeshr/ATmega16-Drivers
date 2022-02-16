@@ -137,7 +137,7 @@ void LCD_intgerToString(int num)
 	while (num != 0)
 	{
 		rem = num%10;
-		reverse = num*10 + rem;
+		reverse = reverse*10 + rem;
 		num /= 10;
 	}
 	while (reverse != 0)
