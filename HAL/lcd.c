@@ -129,11 +129,11 @@ void LCD_displayStringRowColumn(uint8 row,uint8 col,const char *Str)
  * Description :
  * Display the required decimal value on the screen
  */
-void LCD_intgerToString(int num)
+void LCD_intgerToString(sint32 num)
 {
-	uint8 temp;
-	uint8 rem;
-	sint32 reverse;
+	sint32 temp;
+	sint32 rem;
+	sint32 reverse = 0;
 	while (num != 0)
 	{
 		rem = num%10;
