@@ -128,11 +128,11 @@ void GPIO_writePin(uint8 port_num, uint8 pin_num, uint8 value)
 		case PORTD_ID:
 			if (value == LOGIC_HIGH)
 			{
-				SET_BIT(PORTC,pin_num);
+				SET_BIT(PORTD,pin_num);
 			}
 			else
 			{
-				CLEAR_BIT(PORTC,pin_num);
+				CLEAR_BIT(PORTD,pin_num);
 			}
 			break;
 		}
