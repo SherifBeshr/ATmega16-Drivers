@@ -9,6 +9,13 @@ Description : Header file for the AVR ADC driver supports both Polling & interru
 
 #include "std_types.h"
 
+/*
+ * (Configurable)
+ * ADC_INTERRUPT_0_POLLING_1 = 0 --> ( Interrupt Mode )
+ * ADC_INTERRUPT_0_POLLING_1 = 1 --> ( Polling Mode )
+ */
+#define ADC_INTERRUPT_0_POLLING_1			1
+
 /***************************************************************************************************
  *                                		Definitions                                  			   *
  ***************************************************************************************************/

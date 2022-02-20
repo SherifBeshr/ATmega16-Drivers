@@ -8,12 +8,7 @@ Description : Source file for the AVR ADC driver supports both Polling & interru
 #include "adc.h"
 #include "common_macros.h" /* To use the macros like SET_BIT */
 
-/*
- * (Configurable)
- * ADC_INTERRUPT_0_POLLING_1 = 0 --> ( Interrupt Mode )
- * ADC_INTERRUPT_0_POLLING_1 = 1 --> ( Polling Mode )
- */
-#define ADC_INTERRUPT_0_POLLING_1			1
+
 
 /*
  * In polling mode the interrupt.h file is not included.
