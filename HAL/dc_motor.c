@@ -31,6 +31,7 @@ void DcMotor_Init(void)
  * Set the DC Motor State and speed:
  * 1. Set the Motor State ( STOP --> PIN1=0 & PIN2=0  ,  CW --> PIN1=0 & PIN2=1 ,  ACW --> PIN1=1 & PIN2=0 )
  * 2. Set the Motor Speed by passing duty cycle to the PWM function.
+ * Input: State ( CW or ACW or STOP ) , Speed = duty cycle
  */
 void DcMotor_Rotate(DcMotor_State state,uint8 speed)
 {
