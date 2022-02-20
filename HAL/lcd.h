@@ -81,7 +81,7 @@ void LCD_displayStringRowColumn(uint8 row,uint8 col,const char *Str);
  * Description :
  * Display the required decimal value on the screen
  */
-void LCD_intgerToString(sint32 data);
+void LCD_intgerToString(int data);
 
 /*
  * Description :
