@@ -9,12 +9,14 @@ Description : Header file for the AVR ADC driver supports both Polling & interru
 
 #include "std_types.h"
 
+#define INTERRUPT				0
+#define POLLING					1
 /*
  * (Configurable)
- * ADC_INTERRUPT_0_POLLING_1 = 0 --> ( Interrupt Mode )
- * ADC_INTERRUPT_0_POLLING_1 = 1 --> ( Polling Mode )
+ * ADC_MODE = 0 --> ( Interrupt Mode )
+ * ADC_MODE = 1 --> ( Polling Mode )
  */
-#define ADC_INTERRUPT_0_POLLING_1			1
+#define ADC_MODE				INTERRUPT
 
 /***************************************************************************************************
  *                                		Definitions                                  			   *
@@ -23,7 +25,7 @@ Description : Header file for the AVR ADC driver supports both Polling & interru
 #define ADC_REF_VOLT_VALUE   	5
 
 /***************************************************************************************************
- *                                		Types Declaration                                  	   *
+ *                                		Types Declaration                                  	   	   *
  ***************************************************************************************************/
 typedef enum
 {
@@ -45,7 +47,7 @@ typedef struct{
 	ADC_Prescaler prescaler;
 }ADC_ConfigType;
 
-#if (ADC_INTERRUPT_0_POLLING_1 == 0)
+#if (ADC_MODE == 0)
 volatile extern uint16 g_ADC;
 #endif
 

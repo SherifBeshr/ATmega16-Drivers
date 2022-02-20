@@ -13,7 +13,7 @@ Description : Source file for the AVR ADC driver supports both Polling & interru
 /*
  * In polling mode the interrupt.h file is not included.
  */
-#if (ADC_INTERRUPT_0_POLLING_1 == 0)
+#if (ADC_MODE == 0)
 #include <avr/interrupt.h>
 volatile uint16 g_ADC;
 #endif
@@ -23,7 +23,7 @@ volatile uint16 g_ADC;
  *                      				Functions Definitions                                  		*
  ****************************************************************************************************/
 
-#if (ADC_INTERRUPT_0_POLLING_1 == 0)
+#if (ADC_MODE == 0)
 ISR(ADC_vect)
 {
 	g_ADC = ADC;
@@ -48,7 +48,7 @@ void ADC_init(const ADC_ConfigType * Config_Ptr)
 	 */
 	ADCSRA = (1<<ADEN) | ((Config_Ptr->prescaler) << ADPS0);
 
-#if (ADC_INTERRUPT_0_POLLING_1 == 0)				/* Interrupt mode ADC */
+#if (ADC_MODE == 0)				/* Interrupt mode ADC */
 	ADCSRA |= (1<<ADIE);							/* Enable ADC Interrupt module*/
 #endif
 }
@@ -62,7 +62,7 @@ uint16 ADC_readChannel(ADC_Channel channel_num)
 													 * (channel number MUX4:0 bits)  before set the required channel */
 	SET_BIT(ADCSRA,ADSC); 							/* Start conversion write '1' to ADSC */
 
-#if (ADC_INTERRUPT_0_POLLING_1 == 0)				/* Interrupt mode ADC */
+#if (ADC_MODE == 0)				/* Interrupt mode ADC */
 	return g_ADC;									/* Return the global variable value in ISR */
 #else												/* Polling mode ADC */
 	while(BIT_IS_CLEAR(ADCSRA,ADIF)); 				/* Wait for conversion to complete, ADIF becomes '1' */
