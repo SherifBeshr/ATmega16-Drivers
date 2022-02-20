@@ -15,9 +15,9 @@ Description : Source file for the AVR ADC driver supports both Polling & interru
  */
 #if (ADC_INTERRUPT_0_POLLING_1 == 0)
 #include <avr/interrupt.h>
+volatile uint16 g_ADC;
 #endif
 
-volatile uint16 g_ADC;
 
 /****************************************************************************************************
  *                      				Functions Definitions                                  		*
@@ -54,7 +54,7 @@ void ADC_init(const ADC_ConfigType * Config_Ptr)
 }
 
 /* Input channel number must be from 0 --> 7 */
-uint16 ADC_readChannel(uint8 channel_num)
+uint16 ADC_readChannel(ADC_Channel channel_num)
 {
 
 	ADMUX = (ADMUX & 0xE0) | (channel_num & 0x7); 	/* Choose the correct channel by setting the channel number

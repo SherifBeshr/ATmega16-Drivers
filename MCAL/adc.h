@@ -22,17 +22,14 @@ Description : Header file for the AVR ADC driver supports both Polling & interru
 #define ADC_MAXIMUM_VALUE    	1023
 #define ADC_REF_VOLT_VALUE   	5
 
-#define ADC_CHANNEL_0			0
-#define ADC_CHANNEL_1			1
-#define ADC_CHANNEL_2			2
-#define ADC_CHANNEL_3			3
-#define ADC_CHANNEL_4			4
-#define ADC_CHANNEL_5			5
-#define ADC_CHANNEL_6			6
-#define ADC_CHANNEL_7			7
 /***************************************************************************************************
  *                                		Types Declaration                                  	   *
  ***************************************************************************************************/
+typedef enum
+{
+	ADC_CHANNEL_0, ADC_CHANNEL_1, ADC_CHANNEL_2, ADC_CHANNEL_3, ADC_CHANNEL_4, ADC_CHANNEL_5, ADC_CHANNEL_6, ADC_CHANNEL_7
+}ADC_Channel;
+
 typedef enum
 {
 	AREF, AVCC, INTERNAL_2_56V = 3
@@ -48,7 +45,9 @@ typedef struct{
 	ADC_Prescaler prescaler;
 }ADC_ConfigType;
 
+#if (ADC_INTERRUPT_0_POLLING_1 == 0)
 volatile extern uint16 g_ADC;
+#endif
 
 /***************************************************************************************************
  *                                		Functions Prototypes                                  	   *
@@ -65,6 +64,6 @@ void ADC_init(const ADC_ConfigType * Config_Ptr);
  * Function responsible for read analog data from a certain ADC channel
  * and convert it to digital using the ADC driver.
  */
-uint16 ADC_readChannel(uint8 channel_num);
+uint16 ADC_readChannel(ADC_Channel channel_num);
 
 #endif /* ADC_H_ */
