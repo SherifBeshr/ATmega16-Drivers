@@ -22,7 +22,7 @@ Description : Source file for the AVR ADC driver supports both Polling & interru
 #include <avr/interrupt.h>
 #endif
 
-uint16 g_ADC;
+volatile uint16 g_ADC;
 
 /****************************************************************************************************
  *                      				Functions Definitions                                  		*
