@@ -41,7 +41,7 @@ typedef struct{
 	ADC_Prescaler prescaler;
 }ADC_ConfigType;
 
-extern volatile uint16 g_ADC;
+volatile extern uint16 g_ADC;
 
 /***************************************************************************************************
  *                                		Functions Prototypes                                  	   *

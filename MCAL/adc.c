@@ -13,7 +13,7 @@ Description : Source file for the AVR ADC driver supports both Polling & interru
  * ADC_INTERRUPT_0_POLLING_1 = 0 --> ( Interrupt Mode )
  * ADC_INTERRUPT_0_POLLING_1 = 1 --> ( Polling Mode )
  */
-#define ADC_INTERRUPT_0_POLLING_1			0
+#define ADC_INTERRUPT_0_POLLING_1			1
 
 /*
  * In polling mode the interrupt.h file is not included.
@@ -62,7 +62,7 @@ void ADC_init(const ADC_ConfigType * Config_Ptr)
 uint16 ADC_readChannel(uint8 channel_num)
 {
 
-	ADMUX = (ADCSRA & 0xE0) | (channel_num & 0x7); 	/* Choose the correct channel by setting the channel number
+	ADMUX = (ADMUX & 0xE0) | (channel_num & 0x7); 	/* Choose the correct channel by setting the channel number
 													 * in MUX4:0 bits and Clear first 5 bits in the ADMUX
 													 * (channel number MUX4:0 bits)  before set the required channel */
 	SET_BIT(ADCSRA,ADSC); 							/* Start conversion write '1' to ADSC */
