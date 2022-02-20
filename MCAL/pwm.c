@@ -18,7 +18,7 @@ Description : source file for the PWM driver
 void PWM_Timer0_Start(uint8 duty_cycle)
 {
 	GPIO_setupPinDirection(PORTB_ID, PIN3_ID, PIN_OUTPUT);
-	uint8 ON_time = (uint16)(255 * duty_cycle ) / 100;
+	uint8 ON_time = (uint8)((uint16)(PWM_MAX_VALUE * duty_cycle ) / 100);
 	TCNT0 = 0;
 	OCR0 = ON_time;
 	TCCR0 = (1<<WGM01) | (1<<WGM00) | (1<<COM01) | (1<<CS01);		/* Non- Inverting Fast PWM ( Prescalar = 8 ) */
