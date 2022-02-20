@@ -129,24 +129,11 @@ void LCD_displayStringRowColumn(uint8 row,uint8 col,const char *Str)
  * Description :
  * Display the required decimal value on the screen
  */
-void LCD_intgerToString(sint32 num)
+void LCD_intgerToString(int num)
 {
-	sint32 temp;
-	sint32 rem;
-	sint32 reverse = 0;
-	while (num != 0)
-	{
-		rem = num%10;
-		reverse = reverse*10 + rem;
-		num /= 10;
-	}
-	while (reverse != 0)
-	{
-		rem = reverse%10;
-		reverse /= 10;
-		temp = rem +'0';
-		LCD_displayCharacter(temp);
-	}
+	   char buff[16]; /* String to hold the ascii result */
+	   itoa(num,buff,10); /* Use itoa C function to convert the data to its corresponding ASCII value, 10 for decimal */
+	   LCD_displayString(buff); /* Display the string */
 }
 
 /*
