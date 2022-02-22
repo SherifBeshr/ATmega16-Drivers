@@ -60,7 +60,7 @@ void Icu_init(const Icu_ConfigType* Config_Ptr)
      * insert the required edge type in ICES1 bit in TCCR1B Register
      * 1 --> Rising 	, 0 --> Falling
 	 */
-	TCCR1B = (TCCR1B & 0xBF) | (Config_Ptr->edge);
+	TCCR1B = (TCCR1B & 0xBF) | ((Config_Ptr->edge)<<6);
 
 	/* Initial Value for Timer1 */
 	TCNT1 = 0;
