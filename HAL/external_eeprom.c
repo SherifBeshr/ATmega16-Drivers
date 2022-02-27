@@ -14,6 +14,7 @@ Description : Source file for the External EEPROM Memory
 uint8 EEPROM_writeByte(uint16 u16addr,uint8 u8data)
 {
 	/* Send the Start Bit */
+	TWI_start();
 	if(TWI_getStatus() != TWI_START)
 		return ERROR;
     /* Send the device address, we need to get A8 A9 A10 address bits from the
@@ -45,6 +46,7 @@ uint8 EEPROM_writeByte(uint16 u16addr,uint8 u8data)
 uint8 EEPROM_readByte(uint16 u16addr,uint8 *u8data)
 {
 	/* Send the Start Bit */
+	TWI_start();
 	if(TWI_getStatus() != TWI_START)
 		return ERROR;
     /* Send the device address, we need to get A8 A9 A10 address bits from the
