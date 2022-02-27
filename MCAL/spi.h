@@ -9,13 +9,13 @@ Description :
 
 #include "std_types.h"
 
-#define SPI_PORT		PORTB_ID
-#define SPI_SS			PIN4_ID
-#define SPI_MOSI		PIN5_ID
-#define SPI_MISO		PIN6_ID
-#define SPI_SCK			PIN7_ID
+#define SPI_PORT				PORTB_ID
+#define SPI_SS					PIN4_ID
+#define SPI_MOSI				PIN5_ID
+#define SPI_MISO				PIN6_ID
+#define SPI_SCK					PIN7_ID
 
-
+#define SPI_DEFAULT_DATA_VALUE 	0xFF
 
 /***************************************************************************************************
  *                                		Types Decelerations                                  	   *
@@ -75,14 +75,36 @@ typedef struct
  *                                		Function Prototypes                                  	   *
  ***************************************************************************************************/
 
+/*
+ * Description :
+ * Initialize the SPI device as Master.
+ */
 void SPI_initMaster(const SPI_ConfigType* Config_Ptr);
 
+/*
+ * Description :
+ * Initialize the SPI device as Slave.
+ */
 void SPI_initSlave(const SPI_ConfigType* Config_Ptr);
 
+/*
+ * Description :
+ * Send the required data through SPI to the other SPI device.
+ * In the same time data will be received from the other device.
+ */
 uint8 SPI_sendReceiveByte(uint8 data);
 
-void SPI_sendString();
 
-void SPI_receiveString();
+/*
+ * Description :
+ * Send the required string through SPI to the other SPI device.
+ */
+void SPI_sendString(const uint8 *str);
+
+/*
+ * Description :
+ * Receive the required string until the '#' symbol through SPI from the other SPI device.
+ */
+void SPI_receiveString(uint8 *str);
 
 #endif /* SPI_H_ */
