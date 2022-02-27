@@ -128,13 +128,18 @@ void SPI_sendString(const uint8 *str)
 void SPI_receiveString(uint8 *str)
 {
 	uint8 i = 0;
-	uint8 received_data = 0;
 
-	while (str[i] != '#')
+	/* Receive the first byte */
+	str[i] = SPI_sendReceiveByte(SPI_DEFAULT_DATA_VALUE);
+
+	/* Receive the whole string until the '#' */
+	while(str[i] != '#')
 	{
 		i++;
 		str[i] = SPI_sendReceiveByte(SPI_DEFAULT_DATA_VALUE);
 	}
+
 	/* After receiving the whole string plus the '#', replace the '#' with '\0' */
 	str[i] = '\0';
 }
+
