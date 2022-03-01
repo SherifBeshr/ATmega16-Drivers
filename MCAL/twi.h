@@ -29,14 +29,13 @@ Description : Header file for the TWI(I2C) AVR driver
 /*	TWI Pre-scalar	*/
 typedef enum
 {
-	TWI_Prescalar_1 = 1, TWI_Prescalar_4 = 4, TWI_Prescalar_16 = 16, TWI_Prescalar_64 = 64
+	TWI_PRESCALAR_1 = 1, TWI_PRESCALAR_4 = 4, TWI_PRESCALAR_16 = 16, TWI_PRESCALAR_64 = 64
 }TWI_Prescalar;
 
 /*	Structure accessed to choose the TWI:
  * 	1- Frequency desired for TWI (in Hz)
  *  2- Address
  *  3- Pre-scalar value to determine the TWI clock speed
- *
  */
 typedef struct
 {
