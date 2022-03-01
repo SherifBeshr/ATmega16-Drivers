@@ -88,6 +88,15 @@ void Timer_deinit(Timer_ID timer_ID);
  */
 void Timer_setCallBack(Timer_ID timer_ID, void(*a_ptr)(void));
 
+/*
+ * Description: Function to set the Initial value of selected timer.
+ */
+void Timer_SetStartValue(Timer_ID timer_ID, uint16 start_value);
+
+/*
+ * Description: Function to set the Compare Value of the selected timer.
+ */
+void Timer_SetCompareValue(Timer_ID timer_ID, uint16 compare_value);
 
 
 #endif /* TIMER_H_ */
