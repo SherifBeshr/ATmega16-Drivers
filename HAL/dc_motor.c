@@ -40,14 +40,14 @@ void DcMotor_Rotate(DcMotor_State state,uint8 speed)
 		GPIO_writePin(DC_MOTOR_PORT_ID, DC_MOTOR_PIN1_ID, LOGIC_LOW);
 		GPIO_writePin(DC_MOTOR_PORT_ID, DC_MOTOR_PIN2_ID, LOGIC_LOW);
 	}
-	else if (state == CW)
+	else if (state == ACW)
 	{
 		GPIO_writePin(DC_MOTOR_PORT_ID, DC_MOTOR_PIN1_ID, LOGIC_LOW);
 		GPIO_writePin(DC_MOTOR_PORT_ID, DC_MOTOR_PIN2_ID, LOGIC_HIGH);
 		PWM_Timer0_Start(speed);
 
 	}
-	else if (state == ACW)
+	else if (state == CW)
 	{
 		GPIO_writePin(DC_MOTOR_PORT_ID, DC_MOTOR_PIN1_ID, LOGIC_HIGH);
 		GPIO_writePin(DC_MOTOR_PORT_ID, DC_MOTOR_PIN2_ID, LOGIC_LOW);
